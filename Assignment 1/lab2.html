@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title >Resume Website</title>
+    <style>
+
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        header {
+            background: linear-gradient(90deg, #34495e, #2c3e50);
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+        }
+        .content {
+            padding: 20px 40px;
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        table, th, td {
+            border: 2px solid #34495e;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .skip-buttons {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .skip-buttons button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .skip-buttons button:hover {
+            background-color: #1f6391;
+        }
+        img {
+            display: block;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        ul {
+            padding-left: 20px;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color:black" >Aryan's Resume Website</h1>
+    </header>
+
+    <div class="content">
+        <h2>About me</h2>
+        <p>
+            I am Aryan and this page is dedicated entirely to me. This is a resume page so I will keep things short and sweet,
+            but I am a 21-year-old CS student currently studying at Thapar University in Patiala.
+            I like football, movies, games, and most importantly, coding and technologies.
+
+        </p>
+        <em><strong><u>If you don't want to hear any of this and want to go straight to qualifications, click the button below.</u></strong></em>
+        
+        <div class="skip-buttons">
+            <button onclick="location.href='#Education_and_beyond'">Skip to Education</button>
+            <button onclick="location.href='#Skills'">Skip to Skills</button>
+            <button onclick="location.href='#Projects'">Skip to Projects</button>
+        </div>
+        
+        <img src="Aryan.jpeg" width="300" alt="A wonderful picture of Aryan" title="Image of Aryan circa 2025">
+
+        <ul>
+            <li>
+                <h3>Name</h3>
+                Let's start with my full name, that is Aryan Negi, born 11/06/2004.
+            </li>
+            <li id="Education_and_beyond">
+                <h3>Education</h3>
+                <table>
+                    <tr>
+                        <th>Institution</th>
+                        <th>Degree</th>
+                        <th>Years</th>
+                    </tr>
+                    <tr>
+                        <td>Thapar University</td>
+                        <td>B. Tech CS</td>
+                        <td>2023-2027</td>
+                    </tr>
+                    <tr>
+                        <td>Cornball University</td>
+                        <td>M.Tech CS</td>
+                        <td>2027-2029</td>
+                    </tr>
+                </table>
+            </li>
+            <li id="Skills">
+                <h3>Skills</h3>
+                <ul style="list-style-type: disc;">
+                    <li>Proficient in Python, C++, JavaScript</li>
+                    <li>Expert in backend technologies: Django, Express.js</li>
+                    <li>Experience with databases: MongoDB, MySQL</li>
+                </ul>
+            </li>
+            <li id="Projects">
+                <h3>Projects</h3>
+                <ul>
+                    <li><a href="https://github.com/Aryan-04-afk/Recommendation_System">Movie Recommendation System</a></li>
+                    <li><a href="https://github.com/Aryan-04-afk/Online-Auction-Management">Online Auction Management System</a></li>
+                    <li><a href="https://github.com/Aryan-04-afk/Smart-Task-Scheduler-with-AI-Prioritization">Smart Task Scheduler</a></li>
+                    <li><a href="https://github.com/Aryan-04-afk/Real-time-collaborative-code-editor">Real-Time Collaborative Code Editor</a></li>
+                    <li><a href="https://github.com/Aryan-04-afk/Campus-Navigation-APP">Campus Navigation App</a></li>
+                </ul>
+            </li>
+            <li>
+                <h3>Contacts</h3>
+                <a href="mailto:negiaryan57@gmail.com">Contact via mail</a><br>
+                <a href="https://www.instagram.com/virat.kohli/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a><br>
+                <a href="https://www.linkedin.com/in/williamhgates" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        Made by Aryan
+    </footer>
+</body>
+</html>
+
