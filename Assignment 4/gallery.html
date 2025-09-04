@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gallery - College Fest 2025</title>
+    <style>
+      /* General Body and Container Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #ecf0f1;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+      }
+
+      /* Header and Navigation Styles */
+      header {
+        background: #2c3e50;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      nav {
+        background: #34495e;
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      nav a:hover {
+        background-color: #2c3e50;
+      }
+
+      /* Gallery Specific Styles using CSS Grid */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 200px; /* Uniform height for all images */
+        object-fit: cover; /* Ensures images fill their space without distortion */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05); /* Zoom effect on hover */
+      }
+
+      /* Footer Styles */
+      footer {
+        background: #2c3e50;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 20px;
+      }
+
+      /* Responsive adjustments for smaller screens */
+      @media (max-width: 600px) {
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>Photo Gallery</h1></header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="register.html">Register</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="container">
+      <div class="gallery">
+        <img src="Hackathon.png" alt="Hackathon" />
+        <img src="Quiz.png" alt="Event Photo 2" />
+        <img src="Dance.png" alt="Event Photo 3" />
+        <img src="Robot.jpeg" alt="Event Photo 4" />
+        <img src="Sports.jpg" alt="Event Photo 5" />
+        <img src="Drama.jpg" alt="Event Photo 6" />
+      </div>
+    </div>
+    <footer><p>&copy; 2025 College Fest</p></footer>
+  </body>
+</html>
