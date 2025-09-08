@@ -21,11 +21,11 @@ function validateForm(name, email, age) {
   if (isNaN(age) || age < 18 || age > 100) return "Invalid age";
   return "Valid";
 }
-console.log(validateForm("John", "john@example.com", 25));
-console.log(validateForm("", "john@example.com", 25));
+console.log(validateForm("Aryan", "Negi@gmail.com", 25));
+console.log(validateForm("", "Negi@gmail.com", 25));
 
 // 4
-let student = { name: "John", age: 20, grades: "B" };
+let student = { name: "Aryan", age: 20, grades: "B" };
 student.class = "10th";
 student.grades = "A";
 for (let key in student) {
