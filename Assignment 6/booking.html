@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking - GoDiddy</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; }
+    h1 { text-align: center; color: #2c3e50; margin-top: 40px; }
+    form { width: 400px; margin: 30px auto; padding: 25px; background: #fff; border-radius: 12px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.1); }
+    label { font-weight: bold; display: block; margin-bottom: 6px; color: #0077b6; }
+    input, select { width: 100%; padding: 10px; margin-bottom: 18px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+    input:focus, select:focus { border-color: #0077b6; outline: none; box-shadow: 0 0 6px rgba(0, 119, 182, 0.4); }
+    button { width: 100%; padding: 12px; background-color: #0077b6; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; transition: 0.3s; }
+    button:hover { background-color: #005f8f; }
+  </style>
+</head>
+<body>
+  <h1>Book Your Trip</h1>
+  <form>
+    <label>Name:</label>
+    <input type="text" name="name" required />
+
+    <label>Check-in Date:</label>
+    <input type="date" name="checkIn" required />
+
+    <label>Check-out Date:</label>
+    <input type="date" name="checkOut" required />
+
+    <label>Guests:</label>
+    <input type="number" name="guests" min="1" value="1" required />
+
+    <label>Destination:</label>
+    <select name="package">
+      <option>Goa</option>
+      <option>Paris</option>
+      <option>Maldives</option>
+      <option>New York</option>
+      <option>Beijing</option>
+      <option>Tokyo</option>
+      <option>Phuket</option>
+      <option>Jaipur</option>
+    </select>
+
+    <label>Promo Code:</label>
+    <input type="text" name="promo" placeholder="Enter code (e.g. EARLYBIRD)" />
+
+    <button type="submit">Submit Booking</button>
+  </form>
+  <script src="script.js"></script>
+</body>
+</html>
