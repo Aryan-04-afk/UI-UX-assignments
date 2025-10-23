@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 40px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #444;
+    }
+
+    form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      padding: 8px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #addTaskBtn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #taskList {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .task {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .completed .title, 
+    .completed .description {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .task-buttons {
+      margin-top: 10px;
+    }
+
+    .task-buttons button {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .task-buttons button.delete {
+      background-color: #dc3545;
+    }
+
+    .task-buttons button.complete {
+      background-color: #17a2b8;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>To-Do List</h1>
+
+  <form id="taskForm">
+    <input type="text" id="taskTitle" placeholder="Task title" required>
+    <textarea id="taskDesc" placeholder="Task description"></textarea>
+    <button type="submit" id="addTaskBtn">Add Task</button>
+  </form>
+
+  <div id="taskList"></div>
+
+  <script>
+    const taskForm = document.getElementById('taskForm');
+    const taskList = document.getElementById('taskList');
+
+    taskForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const title = document.getElementById('taskTitle').value.trim();
+      const desc = document.getElementById('taskDesc').value.trim();
+
+      if (title === "") return;
+
+      const taskDiv = document.createElement('div');
+      taskDiv.classList.add('task');
+
+      taskDiv.innerHTML = `
+        <div class="title"><strong>${title}</strong></div>
+        <div class="description">${desc}</div>
+        <div class="task-buttons">
+          <button class="complete">Mark as Completed</button>
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </div>
+      `;
+
+      const completeBtn = taskDiv.querySelector('.complete');
+      const editBtn = taskDiv.querySelector('.edit');
+      const deleteBtn = taskDiv.querySelector('.delete');
+      const titleDiv = taskDiv.querySelector('.title');
+      const descDiv = taskDiv.querySelector('.description');
+
+      // Mark as Completed / Incomplete
+      completeBtn.addEventListener('click', () => {
+        taskDiv.classList.toggle('completed');
+        completeBtn.textContent = taskDiv.classList.contains('completed')
+          ? 'Mark as Incomplete'
+          : 'Mark as Completed';
+      });
+
+      // Delete task
+      deleteBtn.addEventListener('click', () => {
+        taskDiv.remove();
+      });
+
+      // Edit / Save task
+      editBtn.addEventListener('click', () => {
+        if (editBtn.textContent === 'Edit') {
+          const titleInput = document.createElement('input');
+          titleInput.type = 'text';
+          titleInput.value = titleDiv.textContent.trim();
+
+          const descInput = document.createElement('textarea');
+          descInput.value = descDiv.textContent.trim();
+
+          titleDiv.replaceWith(titleInput);
+          descDiv.replaceWith(descInput);
+          editBtn.textContent = 'Save';
+        } else {
+          const newTitle = taskDiv.querySelector('input').value.trim();
+          const newDesc = taskDiv.querySelector('textarea').value.trim();
+
+          const newTitleDiv = document.createElement('div');
+          newTitleDiv.classList.add('title');
+          newTitleDiv.innerHTML = `<strong>${newTitle}</strong>`;
+
+          const newDescDiv = document.createElement('div');
+          newDescDiv.classList.add('description');
+          newDescDiv.textContent = newDesc;
+
+          taskDiv.querySelector('input').replaceWith(newTitleDiv);
+          taskDiv.querySelector('textarea').replaceWith(newDescDiv);
+          editBtn.textContent = 'Edit';
+        }
+      });
+
+      taskList.appendChild(taskDiv);
+      taskForm.reset();
+    });
+  </script>
+
+</body>
+</html>
