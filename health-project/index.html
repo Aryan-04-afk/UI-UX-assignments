@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Roundup - Your Personal Health Dashboard</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 50%, #EFF6FF 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .landing-wrapper {
+            max-width: 800px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+        
+        .hero-icon svg { width: 40px; height: 40px; }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            font-size: 1.125rem;
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius-lg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="landing-wrapper">
+
+        <div class="mb-8">
+            <div class="hero-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+            </div>
+            <h1 class="text-3xl font-bold mb-2">Health Roundup</h1>
+            <p class="text-gray-500 text-xl">Your Personal Health Dashboard</p>
+        </div>
+
+        <div class="welcome-card card">
+            <h2 class="text-2xl font-semibold mb-4">
+                Welcome, <span id="welcomeName" class="text-gradient">Aryan</span>! 
+            </h2>
+            <p class="text-gray-500 mb-6" style="line-height: 1.6;">
+                Get your daily health summary, track your progress, and receive personalized recommendations
+                to help you stay on top of your wellness goals.
+            </p>
+
+            <div class="features-grid">
+                <div class="flex items-center" style="gap: 1rem;">
+                    <div class="icon-box blue">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Track Metrics</h3>
+                        <p class="text-sm text-gray-500">Monitor heart rate, steps, sleep & more</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center" style="gap: 1rem;">
+                    <div class="icon-box purple">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Get Insights</h3>
+                        <p class="text-sm text-gray-500">Receive personalized recommendations</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center" style="gap: 1rem;">
+                    <div class="icon-box blue">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">View Progress</h3>
+                        <p class="text-sm text-gray-500">Analyze trends over time</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="dashboard.html" class="btn btn-primary cta-button">
+                Start Your Health Roundup
+                <svg style="margin-left: 0.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </a>
+        </div>
+
+        <p class="text-sm text-gray-500">
+            Your health data, visualized beautifully. Track, analyze, and improve your wellness journey.
+        </p>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profile = loadProfile();
+            document.getElementById('welcomeName').textContent = profile.name;
+        });
+    </script>
+</body>
+</html>

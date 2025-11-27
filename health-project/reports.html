@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Health Roundup</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                </div>
+                <span class="font-bold text-xl">Health Roundup</span>
+            </div>
+
+            <div class="nav-links">
+                <a href="dashboard.html" data-page="dashboard" class="nav-link">Dashboard</a>
+                <a href="reports.html" data-page="reports" class="nav-link active">Reports</a>
+                <a href="recommendations.html" data-page="recommendations" class="nav-link">Insights</a>
+                <a href="profile.html" data-page="profile" class="nav-link">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold mb-2">Health Reports</h1>
+            <p class="text-gray-500">View your detailed health metrics and trends over time</p>
+        </div>
+
+        <div class="card mb-6">
+            <div class="flex justify-between items-center mb-6" style="flex-wrap: wrap; gap: 1rem;">
+                <h2 class="text-xl font-semibold">Select Time Period</h2>
+
+                <div style="background-color:#F3F4F6; padding:0.25rem; border-radius:0.5rem; display:flex;">
+                    <button id="tab-daily"  class="btn-tab active" onclick="switchPeriod('daily')">Daily</button>
+                    <button id="tab-weekly" class="btn-tab" onclick="switchPeriod('weekly')">Weekly</button>
+                    <button id="tab-monthly" class="btn-tab" onclick="switchPeriod('monthly')">Monthly</button>
+                </div>
+            </div>
+
+            <div class="grid grid-4" id="periodSummary"></div>
+        </div>
+
+        <div class="card mb-6">
+            <h2 class="text-xl font-semibold mb-4">Select Metric to Analyze</h2>
+
+            <div class="flex" style="flex-wrap:wrap; gap:0.75rem;">
+                <button onclick="changeMetric('steps', event)" class="btn btn-primary">Steps</button>
+                <button onclick="changeMetric('heartRate', event)" class="btn btn-outline">Heart Rate</button>
+                <button onclick="changeMetric('waterIntake', event)" class="btn btn-outline">Water Intake</button>
+                <button onclick="changeMetric('caloriesBurned', event)" class="btn btn-outline">Calories</button>
+                <button onclick="changeMetric('sleepHours', event)" class="btn btn-outline">Sleep</button>
+            </div>
+        </div>
+
+        <div class="card mb-6">
+            <h2 class="text-xl font-semibold mb-4" id="chartTitle">Steps Trend</h2>
+            <canvas id="reportChart"></canvas>
+        </div>
+
+        <div class="card">
+            <h2 class="text-xl font-semibold mb-4">Detailed Metrics</h2>
+
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Heart Rate</th>
+                            <th>Steps</th>
+                            <th>Water (L)</th>
+                            <th>Calories</th>
+                            <th>Sleep (hrs)</th>
+                            <th>Quality</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid grid-3" style="margin-top:1.5rem;">
+
+            <div class="card" style="background:linear-gradient(135deg,#10B981 0%,#059669 100%); color:white;">
+                <div class="flex items-center space-x-3 mb-4">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                    <h3 class="text-lg font-semibold">Best Performance</h3>
+                </div>
+                <p class="text-3xl font-bold" id="bestValue">--</p>
+                <p class="text-sm opacity-90" id="bestDate">--</p>
+            </div>
+
+            <div class="card" style="background:linear-gradient(135deg,#3B82F6 0%,#2563EB 100%); color:white;">
+                <div class="flex items-center space-x-3 mb-4">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    <h3 class="text-lg font-semibold">Period Average</h3>
+                </div>
+                <p class="text-3xl font-bold" id="avgValue">--</p>
+                <p class="text-sm opacity-90">Across all days</p>
+            </div>
+
+            <div class="card" style="background:linear-gradient(135deg,#8B5CF6 0%,#7C3AED 100%); color:white;">
+                <div class="flex items-center space-x-3 mb-4">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                    </svg>
+                    <h3 class="text-lg font-semibold">Trend Analysis</h3>
+                </div>
+                <p class="text-3xl font-bold" id="trendValue">--</p>
+                <p class="text-sm opacity-90" id="trendDescription">--</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/report.js"></script>
+
+</body>
+</html>

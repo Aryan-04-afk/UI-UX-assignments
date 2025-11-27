@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Insights - Health Roundup</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                </div>
+                <span class="font-bold text-xl">Health Roundup</span>
+            </div>
+
+            <div class="nav-links">
+                <a href="dashboard.html" data-page="dashboard" class="nav-link">Dashboard</a>
+                <a href="reports.html" data-page="reports" class="nav-link">Reports</a>
+                <a href="recommendations.html" data-page="recommendations" class="nav-link active">Insights</a>
+                <a href="profile.html" data-page="profile" class="nav-link">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold mb-2">Health Insights & Recommendations</h1>
+            <p class="text-gray-500">Personalized recommendations based on your health data</p>
+        </div>
+
+        <div class="banner-card mb-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">Your Health Score</h2>
+                    <p class="text-lg opacity-90">Based on your activity over the past 7 days</p>
+                </div>
+                <div class="text-center">
+                    <div class="glass-panel" style="width: 128px; height: 128px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
+                        <span class="text-3xl font-bold" style="font-size: 3rem;" id="healthScore">--</span>
+                    </div>
+                    <p class="text-sm opacity-90" id="scoreRating">Calculating...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-2 mb-8">
+
+            <div class="card rec-card purple">
+                <div class="icon-box purple">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Sleep Quality</h3>
+                    <p class="text-gray-500 mb-4" id="sleepInsight">
+                        You're sleeping less than average this week. Aim for 7-8 hours of quality sleep each night.
+                    </p>
+                    <span class="status-badge" id="sleepStatus">Needs Improvement</span>
+                </div>
+            </div>
+
+            <div class="card rec-card blue">
+                <div class="icon-box blue">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Daily Activity</h3>
+                    <p class="text-gray-500 mb-4" id="activityInsight">
+                        Great job! You hit your step goal 5 out of 7 days this week.
+                    </p>
+                    <span class="status-badge" id="activityStatus">Excellent</span>
+                </div>
+            </div>
+
+            <div class="card rec-card cyan">
+                <div class="icon-box cyan">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Hydration</h3>
+                    <p class="text-gray-500 mb-4" id="hydrationInsight">
+                        Consider increasing your daily water intake by 0.5L to reach optimal hydration levels.
+                    </p>
+                    <span class="status-badge" id="hydrationStatus">Good</span>
+                </div>
+            </div>
+
+            <div class="card rec-card red">
+                <div class="icon-box red">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Heart Health</h3>
+                    <p class="text-gray-500 mb-4" id="heartInsight">
+                        Your average heart rate improved by 8% this week. Keep up the good work!
+                    </p>
+                    <span class="status-badge" id="heartStatus">Improving</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card mb-8">
+            <h2 class="text-xl font-semibold mb-6">Your Achievements</h2>
+            <div class="grid grid-4">
+
+                <div class="text-center p-4 bg-gray-50 rounded-lg" id="stepsAchievement">
+                    <div class="icon-box blue" style="width: 64px; height: 64px; margin: 0 auto 1rem auto; border-radius: 50%;">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-sm mb-1" id="stepsBadgeTitle">Step Master</h3>
+                    <p class="text-gray-500 text-sm" id="stepsBadgeDesc">Loading...</p>
+                </div>
+
+                <div class="text-center p-4 bg-gray-50 rounded-lg" id="waterAchievement">
+                    <div class="icon-box cyan" style="width: 64px; height: 64px; margin: 0 auto 1rem auto; border-radius: 50%;">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-sm mb-1" id="waterBadgeTitle">Hydration Hero</h3>
+                    <p class="text-gray-500 text-sm" id="waterBadgeDesc">Loading...</p>
+                </div>
+
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <div class="icon-box purple" style="width: 64px; height: 64px; margin: 0 auto 1rem auto; border-radius: 50%;">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-sm mb-1">Consistency Champion</h3>
+                    <p class="text-gray-500 text-sm">7 days tracked</p>
+                </div>
+
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <div class="icon-box orange" style="width: 64px; height: 64px; margin: 0 auto 1rem auto; border-radius: 50%;">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-sm mb-1" id="caloriesBadgeTitle">Calorie Crusher</h3>
+                    <p class="text-gray-500 text-sm" id="caloriesBadgeDesc">Loading...</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="text-xl font-semibold mb-6">Personalized Action Tips</h2>
+            <div class="grid grid-3" id="actionTipsContainer">
+                </div>
+        </div>
+
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+       
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setActiveNav('recommendations');
+            calculateHealthScore();
+            generateDynamicInsights();
+            updateAchievementBadges();
+            generatePersonalizedTips();
+        });
+
+        function calculateHealthScore() {
+            let score = 0;
+            const avgSteps = calculateAverage('steps');
+            const stepsScore = Math.min((avgSteps / 10000) * 40, 40);
+            score += stepsScore;
+            const avgSleep = calculateAverage('sleepHours');
+            const sleepScore = avgSleep >= 7 ? 30 : (avgSleep / 7) * 30;
+            score += sleepScore;
+            const avgWater = calculateAverage('waterIntake');
+            const waterScore = avgWater >= 3 ? 20 : (avgWater / 3) * 20;
+            score += waterScore;
+            const avgHR = calculateAverage('heartRate');
+            const hrScore = avgHR <= 70 ? 10 : Math.max(10 - ((avgHR - 70) / 2), 0);
+            score += hrScore;
+
+            const finalScore = Math.round(score);
+            document.getElementById('healthScore').textContent = finalScore;
+
+            let rating = '';
+            if (finalScore >= 90) rating = 'Excellent Health';
+            else if (finalScore >= 80) rating = 'Very Good';
+            else if (finalScore >= 70) rating = 'Good';
+            else if (finalScore >= 60) rating = 'Fair';
+            else rating = 'Needs Improvement';
+
+            document.getElementById('scoreRating').textContent = rating;
+        }
+
+        function generateDynamicInsights() {
+            // Sleep Insight
+            const avgSleep = calculateAverage('sleepHours');
+            const sleepInsightEl = document.getElementById('sleepInsight');
+            const sleepStatusEl = document.getElementById('sleepStatus');
+
+            if (avgSleep >= 7.5) {
+                sleepInsightEl.textContent = 'Excellent! You\'re maintaining a healthy sleep schedule with an average of ' + avgSleep.toFixed(1) + ' hours per night.';
+                sleepStatusEl.textContent = 'Excellent';
+                sleepStatusEl.className = 'status-badge status-excellent';
+            } else if (avgSleep >= 6.5) {
+                sleepInsightEl.textContent = 'You\'re averaging ' + avgSleep.toFixed(1) + ' hours of sleep. Try to aim for 7-8 hours for optimal health.';
+                sleepStatusEl.textContent = 'Good';
+                sleepStatusEl.className = 'status-badge status-good';
+            } else {
+                sleepInsightEl.textContent = 'You\'re sleeping less than recommended (' + avgSleep.toFixed(1) + ' hours average). Aim for 7-8 hours each night.';
+                sleepStatusEl.textContent = 'Needs Improvement';
+                sleepStatusEl.className = 'status-badge status-bad';
+            }
+
+            // Activity Insight
+            const goalDays = healthData.daily.filter(day => day.steps >= 10000).length;
+            const activityInsightEl = document.getElementById('activityInsight');
+            const activityStatusEl = document.getElementById('activityStatus');
+
+            if (goalDays >= 5) {
+                activityInsightEl.textContent = 'Fantastic! You hit your step goal ' + goalDays + ' out of 7 days this week. Keep it up!';
+                activityStatusEl.textContent = 'Excellent';
+                activityStatusEl.className = 'status-badge status-excellent';
+            } else if (goalDays >= 3) {
+                activityInsightEl.textContent = 'Good progress! You reached your step goal ' + goalDays + ' days this week. Try to increase consistency.';
+                activityStatusEl.textContent = 'Good';
+                activityStatusEl.className = 'status-badge status-good';
+            } else {
+                activityInsightEl.textContent = 'You only met your step goal ' + goalDays + ' days this week. Try to be more active daily.';
+                activityStatusEl.textContent = 'Needs Improvement';
+                activityStatusEl.className = 'status-badge status-bad';
+            }
+
+            // Hydration Insight
+            const avgWater = calculateAverage('waterIntake');
+            const hydrationInsightEl = document.getElementById('hydrationInsight');
+            const hydrationStatusEl = document.getElementById('hydrationStatus');
+
+            if (avgWater >= 3.0) {
+                hydrationInsightEl.textContent = 'Perfect hydration! You\'re averaging ' + avgWater.toFixed(1) + 'L per day. Keep maintaining this level.';
+                hydrationStatusEl.textContent = 'Excellent';
+                hydrationStatusEl.className = 'status-badge status-excellent';
+            } else if (avgWater >= 2.5) {
+                hydrationInsightEl.textContent = 'Good hydration at ' + avgWater.toFixed(1) + 'L daily. Consider increasing by 0.5L for optimal levels.';
+                hydrationStatusEl.textContent = 'Good';
+                hydrationStatusEl.className = 'status-badge status-good';
+            } else {
+                hydrationInsightEl.textContent = 'Your water intake (' + avgWater.toFixed(1) + 'L daily) is below recommended. Aim for at least 3L per day.';
+                hydrationStatusEl.textContent = 'Needs Improvement';
+                hydrationStatusEl.className = 'status-badge status-bad';
+            }
+
+            // Heart Health Insight
+            const heartData = getMetricData('heartRate');
+            const firstWeekAvg = (heartData[0] + heartData[1] + heartData[2]) / 3;
+            const lastWeekAvg = (heartData[4] + heartData[5] + heartData[6]) / 3;
+            const improvement = ((firstWeekAvg - lastWeekAvg) / firstWeekAvg * 100);
+
+            const heartInsightEl = document.getElementById('heartInsight');
+            const heartStatusEl = document.getElementById('heartStatus');
+
+            if (improvement > 0) {
+                heartInsightEl.textContent = 'Your resting heart rate improved by ' + improvement.toFixed(1) + '% this week. Excellent cardiovascular progress!';
+                heartStatusEl.textContent = 'Improving';
+                heartStatusEl.className = 'status-badge status-improving';
+            } else {
+                heartInsightEl.textContent = 'Your heart rate is stable at ' + calculateAverage('heartRate').toFixed(1) + ' BPM. Maintain your current activity level.';
+                heartStatusEl.textContent = 'Stable';
+                heartStatusEl.className = 'status-badge status-stable';
+            }
+        }
+
+        function generatePersonalizedTips() {
+            const avgSteps = calculateAverage('steps');
+            const avgSleep = calculateAverage('sleepHours');
+            const avgWater = calculateAverage('waterIntake');
+            const avgHR = calculateAverage('heartRate');
+            const goalDays = healthData.daily.filter(day => day.steps >= 10000).length;
+
+            const allTips = [
+                {
+                    condition: avgSleep < 7,
+                    color: 'purple',
+                    title: 'Establish a bedtime routine',
+                    description: 'Go to bed at the same time every night. Your current average is ' + avgSleep.toFixed(1) + ' hours.',
+                    priority: 10
+                },
+                {
+                    condition: avgSleep < 6.5,
+                    color: 'purple',
+                    title: 'Limit screen time before bed',
+                    description: 'Avoid phones/laptops 1 hour before sleep to improve sleep quality',
+                    priority: 9
+                },
+                {
+                    condition: avgSteps < 8000,
+                    color: 'blue',
+                    title: 'Take more walking breaks',
+                    description: 'Stand and walk for 5-10 minutes every hour. You need ' + Math.round(10000 - avgSteps) + ' more steps daily.',
+                    priority: 8
+                },
+                {
+                    condition: goalDays < 4,
+                    color: 'green',
+                    title: 'Set hourly step reminders',
+                    description: 'Use phone alarms to remind yourself to move throughout the day',
+                    priority: 7
+                },
+                {
+                    condition: avgSteps < 5000,
+                    color: 'cyan',
+                    title: 'Park farther away',
+                    description: 'Choose parking spots further from entrances to add extra steps',
+                    priority: 9
+                },
+                {
+                    condition: avgWater < 2.5,
+                    color: 'cyan',
+                    title: 'Keep water visible',
+                    description: 'Place a water bottle on your desk. You need ' + (3.0 - avgWater).toFixed(1) + 'L more daily.',
+                    priority: 8
+                },
+                {
+                    condition: avgWater < 3.0,
+                    color: 'cyan',
+                    title: 'Set hydration reminders',
+                    description: 'Drink a glass of water every 2 hours to reach your 3L goal',
+                    priority: 6
+                },
+                {
+                    condition: avgHR > 75,
+                    color: 'red',
+                    title: 'Practice deep breathing',
+                    description: 'Take 5 deep breaths when stressed. Your resting HR is ' + avgHR.toFixed(0) + ' BPM.',
+                    priority: 7
+                },
+                {
+                    condition: avgHR > 70,
+                    color: 'orange',
+                    title: 'Try meditation',
+                    description: 'Spend 10 minutes daily meditating to lower resting heart rate',
+                    priority: 5
+                },
+                {
+                    condition: true,
+                    color: 'purple',
+                    title: 'Track your meals',
+                    description: 'Log what you eat to better understand your nutrition patterns',
+                    priority: 4
+                },
+                {
+                    condition: true,
+                    color: 'purple',
+                    title: 'Stretch regularly',
+                    description: 'Do light stretches in the morning and before bed for flexibility',
+                    priority: 3
+                },
+                {
+                    condition: avgSteps > 10000 && avgSleep >= 7,
+                    color: 'green',
+                    title: 'Keep up the great work!',
+                    description: 'You\'re crushing your goals! Maintain this healthy routine',
+                    priority: 10
+                },
+                {
+                    condition: true,
+                    color: 'orange',
+                    title: 'Stay consistent',
+                    description: 'Small daily improvements lead to big long-term results',
+                    priority: 2
+                }
+            ];
+
+            const applicableTips = allTips
+                .filter(tip => tip.condition)
+                .sort((a, b) => b.priority - a.priority)
+                .slice(0, 6);
+
+            const tipsContainer = document.getElementById('actionTipsContainer');
+            let tipsHTML = '';
+
+            applicableTips.forEach((tip, index) => {
+                tipsHTML += `
+                    <div class="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors" style="background-color: #F9FAFB; padding: 1rem; border-radius: 0.5rem; display: flex; gap: 0.75rem;">
+                        <div class="icon-box ${tip.color}" style="width: 32px; height: 32px; border-radius: 50%; font-size: 0.875rem; font-weight: bold;">
+                            ${index + 1}
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-sm mb-1">${tip.title}</h4>
+                            <p class="text-sm text-gray-500">${tip.description}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            tipsContainer.innerHTML = tipsHTML;
+        }
+
+        function updateAchievementBadges() {
+            const goalDays = healthData.daily.filter(day => day.steps >= 10000).length;
+            const avgWater = calculateAverage('waterIntake');
+            const totalCalories = healthData.daily.reduce((sum, day) => sum + day.caloriesBurned, 0);
+
+            // Steps Badge
+            const stepsBadgeTitle = document.getElementById('stepsBadgeTitle');
+            const stepsBadgeDesc = document.getElementById('stepsBadgeDesc');
+            if (goalDays >= 7) {
+                stepsBadgeTitle.textContent = 'Perfect Week!';
+                stepsBadgeDesc.textContent = '7/7 days goal achieved';
+            } else if (goalDays >= 5) {
+                stepsBadgeTitle.textContent = 'Step Master';
+                stepsBadgeDesc.textContent = goalDays + '/7 days goal met';
+            } else if (goalDays >= 3) {
+                stepsBadgeTitle.textContent = 'On the Move';
+                stepsBadgeDesc.textContent = goalDays + '/7 days goal met';
+            } else {
+                stepsBadgeTitle.textContent = 'Getting Started';
+                stepsBadgeDesc.textContent = goalDays + '/7 days goal met';
+            }
+
+            // Water Badge
+            const waterBadgeTitle = document.getElementById('waterBadgeTitle');
+            const waterBadgeDesc = document.getElementById('waterBadgeDesc');
+            const waterDays = healthData.daily.filter(day => day.waterIntake >= 3.0).length;
+            if (avgWater >= 3.0) {
+                waterBadgeTitle.textContent = 'Hydration Hero';
+                waterBadgeDesc.textContent = waterDays + '/7 days optimal';
+            } else if (avgWater >= 2.5) {
+                waterBadgeTitle.textContent = 'Well Hydrated';
+                waterBadgeDesc.textContent = 'Avg: ' + avgWater.toFixed(1) + 'L/day';
+            } else {
+                waterBadgeTitle.textContent = 'Stay Hydrated';
+                waterBadgeDesc.textContent = 'Avg: ' + avgWater.toFixed(1) + 'L/day';
+            }
+
+            // Calories Badge
+            const caloriesBadgeTitle = document.getElementById('caloriesBadgeTitle');
+            const caloriesBadgeDesc = document.getElementById('caloriesBadgeDesc');
+            if (totalCalories >= 3500) {
+                caloriesBadgeTitle.textContent = 'Calorie Crusher';
+                caloriesBadgeDesc.textContent = totalCalories.toLocaleString() + ' kcal burned';
+            } else if (totalCalories >= 3000) {
+                caloriesBadgeTitle.textContent = 'Burning Strong';
+                caloriesBadgeDesc.textContent = totalCalories.toLocaleString() + ' kcal burned';
+            } else {
+                caloriesBadgeTitle.textContent = 'Building Momentum';
+                caloriesBadgeDesc.textContent = totalCalories.toLocaleString() + ' kcal burned';
+            }
+        }
+    </script>
+</body>
+</html>
